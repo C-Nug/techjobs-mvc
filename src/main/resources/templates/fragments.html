@@ -27,5 +27,16 @@
         </div>
     </div>
 
+    <table th:fragment="jobTable" th:each="job : ${jobs}" class="job-listing">
+        <tr th:each="jobDetail : ${job}">
+            <td  th:text="${#strings.capitalizeWords(jobDetail.getKey())}">
+            </td>
+            <td>
+                <a th:href="@{/list/jobs(column=${jobDetail.getKey()},value=${jobDetail.getValue()})}"
+                   th:text="${jobDetail.getValue()}"></a>
+            </td>
+        </tr>
+    </table>
+
 </body>
 </html>
